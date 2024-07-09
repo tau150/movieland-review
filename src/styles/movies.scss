@@ -1,22 +1,6 @@
 
-.movies-container {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(3, 1fr);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+@import 'grid-movies-container';
 
-
-    @media (max-width: 599px) {
-        grid-template-columns: 1fr;
-    }
-
-    @media (min-width: 600px) and (max-width: 1023px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-}
 
 .container {
     padding-top: 100px;
@@ -34,6 +18,7 @@
     .wrapper {
         padding: 0 6px;
         margin-bottom: 2rem;
+        max-width: 450px;
     }
 
     .card,
