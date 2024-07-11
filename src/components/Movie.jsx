@@ -3,7 +3,7 @@ import starredSlice from '../data/starredSlice'
 import watchLaterSlice from '../data/watchLaterSlice'
 import placeholder from '../assets/not-found-500X750.jpeg'
 
-const Movie = ({ movie, viewTrailer }) => {
+const Movie = ({ movie, viewTrailer, onImageLoad }) => {
 
     const state = useSelector((state) => state)
     const { starred, watchLater } = state
@@ -57,7 +57,7 @@ const Movie = ({ movie, viewTrailer }) => {
                     )}
                     <button type="button" className="btn btn-dark" onClick={() => viewTrailer(movie)}>View Trailer</button>
                 </div>
-                <img className="center-block" src={(movie.poster_path) ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : placeholder} alt="Movie poster" />
+                <img className="center-block" onLoad={onImageLoad} src={(movie.poster_path) ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : placeholder} alt="Movie poster" />
             </div>
             <h6 className="title mobile-card">{movie.title}</h6>
             <h6 className="title">{movie.title}</h6>

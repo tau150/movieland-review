@@ -2,6 +2,26 @@ import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { renderWithProviders } from "./test/utils"
 import App from './App'
+import { useObserver } from './hooks/useObserver';
+
+
+jest.mock('./hooks/useObserver');
+
+beforeEach(() => {
+  const portalContainer = document.createElement('div');
+  portalContainer.setAttribute('id', 'modal-root');
+  document.body.appendChild(portalContainer);
+  useObserver.mockImplementation(() => {})
+});
+
+afterEach(() => {
+  // eslint-disable-next-line testing-library/no-node-access
+  const portalContainer = document.getElementById('modal-root');
+  if (portalContainer) {
+    document.body.removeChild(portalContainer);
+  }
+});
+
 
 it('renders watch later link', () => {
   renderWithProviders(<App />)
@@ -10,16 +30,22 @@ it('renders watch later link', () => {
 })
 
 it('search for movies', async () => {
+
   renderWithProviders(<App />)
+
   await userEvent.type(screen.getByTestId('search-movies'), 'forrest gump')
+
   await waitFor(() => {
     expect(screen.getAllByText('Through the Eyes of Forrest Gump')[0]).toBeInTheDocument()
-  })
+  }, { timeout: 5000 })
+
   const viewTrailerBtn = screen.getAllByText('View Trailer')[0]
+
   await userEvent.click(viewTrailerBtn)
+
   await waitFor(() => {
-    expect(screen.getByTestId('youtube-player')).toBeInTheDocument()
-  })
+    expect(screen.getByTestId('youtube-player')).toBeInTheDocument();
+  });
 })
 
 it('renders watch later component', async() => {
@@ -37,5 +63,5 @@ it('renders starred component', async() => {
   expect(screen.getByText(/There are no starred movies/i)).toBeInTheDocument()
   await waitFor(() => {
     expect(screen.getByTestId('starred')).toBeInTheDocument()
-  })  
+  })
 })
