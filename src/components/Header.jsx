@@ -1,15 +1,20 @@
 import { Link, NavLink } from "react-router-dom"
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { resetMovies } from '../data/moviesSlice'
 
 import '../styles/header.scss'
 
 const Header = ({ searchMovies }) => {
-  
   const { starredMovies } = useSelector((state) => state.starred)
+  const dispatch = useDispatch()
 
+  const handleClickGoHome = () => {
+    dispatch(resetMovies())
+    searchMovies('')
+  }
   return (
     <header>
-      <Link to="/" data-testid="home" onClick={() => searchMovies('')}>
+      <Link to="/" data-testid="home" onClick={(handleClickGoHome)}>
         <i className="bi bi-film" />
       </Link>
 
@@ -30,16 +35,14 @@ const Header = ({ searchMovies }) => {
       </nav>
 
       <div className="input-group rounded">
-        <Link to="/" onClick={(e) => searchMovies('')} className="search-link" >
           <input type="search" data-testid="search-movies"
-            onKeyUp={(e) => searchMovies(e.target.value)} 
-            className="form-control rounded" 
-            placeholder="Search movies..." 
-            aria-label="Search movies" 
-            aria-describedby="search-addon" 
+            onKeyUp={(e) => searchMovies(e.target.value)}
+            className="form-control rounded"
+            placeholder="Search movies..."
+            aria-label="Search movies"
+            aria-describedby="search-addon"
             />
-        </Link>            
-      </div>      
+      </div>
     </header>
   )
 }
