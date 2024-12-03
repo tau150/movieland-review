@@ -1,5 +1,7 @@
+@import 'grid-movies-container';
+
+
 .starred {
-  
     footer {
         margin-top: 50px;
 
@@ -9,7 +11,7 @@
 
         .btn {
             width: auto;
-            padding: 0 20px;                   
+            padding: 0 20px;
             font-size: 0.8rem;
             background: red;
             border: none;
@@ -25,4 +27,3 @@
         }
     }
 }
-  

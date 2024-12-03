@@ -15,10 +15,10 @@ const WatchLater = ({viewTrailer}) => {
     <div className="starred" data-testid="watch-later-div">
       {watchLater.watchLaterMovies.length > 0 && (<div data-testid="watch-later-movies" className="starred-movies">
         <h6 className="header">Watch Later List</h6>
-        <div className="row">
+        <div className="movies-container">
         {watchLater.watchLaterMovies.map((movie) => (
-          <Movie 
-            movie={movie} 
+          <Movie
+            movie={movie}
             key={movie.id}
             viewTrailer={viewTrailer}
           />

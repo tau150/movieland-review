@@ -16,7 +16,7 @@ header {
 
       @media (max-width: 720px) {
         width: 150px;
-      }      
+      }
 
       input {
         height: 25px;
@@ -44,7 +44,7 @@ header {
 
         &.nav-fav {
           font-size: 0.8rem;
-          color: #ccc;          
+          color: #ccc;
           text-decoration: none;
 
           &:hover {
@@ -58,7 +58,7 @@ header {
       margin: 0.5rem;
       font-size: 1.2rem;
       color: #fff;
-    
+
       &:hover {
         color: #fff;
       }
@@ -73,8 +73,8 @@ header {
         color: #fff;
         background: red;
         border-radius: 50%;
-      }     
-      
+      }
+
       &.bi-film {
         float: left;
         margin-left: 1.5rem;
@@ -101,13 +101,13 @@ header {
         50% {
           color: red;
         }
-      }  
+      }
     }
 
     .selected {
       i {
         color: #fff;
       }
-    }    
-    
+    }
+
   }

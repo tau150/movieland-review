@@ -1,0 +1,16 @@
+.movies-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 599px) {
+      grid-template-columns: 1fr;
+  }
+
+  @media (min-width: 600px) and (max-width: 1023px) {
+      grid-template-columns: repeat(2, 1fr);
+  }
+}
